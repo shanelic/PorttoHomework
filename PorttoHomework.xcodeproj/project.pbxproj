@@ -14,6 +14,7 @@
 		30E0A0692AB0BB1900FD1CE4 /* PorttoHomeworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0A0682AB0BB1900FD1CE4 /* PorttoHomeworkTests.swift */; };
 		30E0A0732AB0BB1900FD1CE4 /* PorttoHomeworkUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0A0722AB0BB1900FD1CE4 /* PorttoHomeworkUITests.swift */; };
 		30E0A0752AB0BB1900FD1CE4 /* PorttoHomeworkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0A0742AB0BB1900FD1CE4 /* PorttoHomeworkUITestsLaunchTests.swift */; };
+		30E0A0832AB0BC1E00FD1CE4 /* Web3Actor in Frameworks */ = {isa = PBXBuildFile; productRef = 30E0A0822AB0BC1E00FD1CE4 /* Web3Actor */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30E0A0832AB0BC1E00FD1CE4 /* Web3Actor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +147,9 @@
 			dependencies = (
 			);
 			name = PorttoHomework;
+			packageProductDependencies = (
+				30E0A0822AB0BC1E00FD1CE4 /* Web3Actor */,
+			);
 			productName = PorttoHomework;
 			productReference = 30E0A0532AB0BB1700FD1CE4 /* PorttoHomework.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +222,9 @@
 				Base,
 			);
 			mainGroup = 30E0A04A2AB0BB1700FD1CE4;
+			packageReferences = (
+				30E0A0812AB0BC1E00FD1CE4 /* XCRemoteSwiftPackageReference "Web3Actor" */,
+			);
 			productRefGroup = 30E0A0542AB0BB1700FD1CE4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -612,6 +620,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		30E0A0812AB0BC1E00FD1CE4 /* XCRemoteSwiftPackageReference "Web3Actor" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/shanelic/Web3Actor.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		30E0A0822AB0BC1E00FD1CE4 /* Web3Actor */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30E0A0812AB0BC1E00FD1CE4 /* XCRemoteSwiftPackageReference "Web3Actor" */;
+			productName = Web3Actor;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 30E0A04B2AB0BB1700FD1CE4 /* Project object */;
 }
