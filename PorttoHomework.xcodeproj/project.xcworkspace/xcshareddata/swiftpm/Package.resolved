@@ -176,8 +176,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/shanelic/Web3Actor.git",
       "state" : {
-        "revision" : "faede561a70a5cb00428b1360f918092ebcf1e2f",
-        "version" : "0.0.9"
+        "revision" : "8fb70db15d5ade1fbef39ee019b64304e0e0b55b",
+        "version" : "0.0.12"
       }
     },
     {
