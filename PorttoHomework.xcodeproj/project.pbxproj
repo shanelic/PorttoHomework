@@ -17,6 +17,8 @@
 		30E0A0752AB0BB1900FD1CE4 /* PorttoHomeworkUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30E0A0742AB0BB1900FD1CE4 /* PorttoHomeworkUITestsLaunchTests.swift */; };
 		30E0A0832AB0BC1E00FD1CE4 /* Web3Actor in Frameworks */ = {isa = PBXBuildFile; productRef = 30E0A0822AB0BC1E00FD1CE4 /* Web3Actor */; };
 		30F83C332AB3581E00091E70 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F83C322AB3581E00091E70 /* ThumbnailView.swift */; };
+		30F83C362AB3730D00091E70 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 30F83C352AB3730D00091E70 /* SDWebImageSwiftUI */; };
+		30F83C392AB3732300091E70 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 30F83C382AB3732300091E70 /* SDWebImageSVGCoder */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30F83C392AB3732300091E70 /* SDWebImageSVGCoder in Frameworks */,
+				30F83C362AB3730D00091E70 /* SDWebImageSwiftUI in Frameworks */,
 				30E0A0832AB0BC1E00FD1CE4 /* Web3Actor in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -163,6 +167,8 @@
 			name = PorttoHomework;
 			packageProductDependencies = (
 				30E0A0822AB0BC1E00FD1CE4 /* Web3Actor */,
+				30F83C352AB3730D00091E70 /* SDWebImageSwiftUI */,
+				30F83C382AB3732300091E70 /* SDWebImageSVGCoder */,
 			);
 			productName = PorttoHomework;
 			productReference = 30E0A0532AB0BB1700FD1CE4 /* PorttoHomework.app */;
@@ -238,6 +244,8 @@
 			mainGroup = 30E0A04A2AB0BB1700FD1CE4;
 			packageReferences = (
 				30E0A0812AB0BC1E00FD1CE4 /* XCRemoteSwiftPackageReference "Web3Actor" */,
+				30F83C342AB3730D00091E70 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				30F83C372AB3732300091E70 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */,
 			);
 			productRefGroup = 30E0A0542AB0BB1700FD1CE4 /* Products */;
 			projectDirPath = "";
@@ -650,6 +658,22 @@
 				minimumVersion = 0.0.5;
 			};
 		};
+		30F83C342AB3730D00091E70 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		30F83C372AB3732300091E70 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGCoder.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -657,6 +681,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 30E0A0812AB0BC1E00FD1CE4 /* XCRemoteSwiftPackageReference "Web3Actor" */;
 			productName = Web3Actor;
+		};
+		30F83C352AB3730D00091E70 /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30F83C342AB3730D00091E70 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
+		};
+		30F83C382AB3732300091E70 /* SDWebImageSVGCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 30F83C372AB3732300091E70 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */;
+			productName = SDWebImageSVGCoder;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
