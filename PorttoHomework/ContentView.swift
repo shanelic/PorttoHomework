@@ -34,3 +34,20 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+extension Array {
+    func byEach(_ num: Int) -> Array<Array<Element>> {
+        var temp: [[Element]] = []
+        for (index, element) in self.enumerated() {
+            if (temp.count - 1) < (index / num) {
+                temp.append([])
+            }
+            temp[index / num].append(element)
+        }
+        return temp
+    }
+}
+
+extension Array: Identifiable where Element: Hashable {
+    public var id: Self { self }
+}
