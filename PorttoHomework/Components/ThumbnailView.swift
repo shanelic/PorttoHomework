@@ -6,18 +6,28 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ThumbnailView: View {
     let imageUrl: String
     let name: String
     var body: some View {
         VStack {
-            AsyncImage(url: URL(string: imageUrl)) { image in
-                image
+            if imageUrl.hasSuffix(".svg") {
+                WebImage(url: URL(string: imageUrl))
+                    .placeholder {
+                        ProgressView()
+                    }
                     .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                ProgressView()
+                    .aspectRatio(1, contentMode: .fit)
+            } else {
+                AsyncImage(url: URL(string: imageUrl)) { image in
+                    image
+                        .resizable()
+                        .aspectRatio(1, contentMode: .fit)
+                } placeholder: {
+                    ProgressView()
+                }
             }
             Text(name)
                 .bold()
