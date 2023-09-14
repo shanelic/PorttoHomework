@@ -12,13 +12,20 @@ struct ContentView: View {
     @ObservedObject private var viewModel = MainViewModel()
     
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        ScrollView {
+            VStack(spacing: 8) {
+                Grid(horizontalSpacing: 12, verticalSpacing: 12) {
+                    ForEach(viewModel.nfts.byEach(2)) { row in
+                        GridRow {
+                            ForEach(row) { item in
+                                ThumbnailView(imageUrl: item.imageUrl ?? "", name: item.name)
+                            }
+                        }
+                    }
+                }
+            }
+            .padding()
         }
-        .padding()
     }
 }
 
