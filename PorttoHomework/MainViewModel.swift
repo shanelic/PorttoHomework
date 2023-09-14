@@ -12,7 +12,7 @@ import Web3
 
 class MainViewModel: ObservableObject {
     
-    @Published var nfts: Set<Opensea.NFT> = []
+    @Published var nfts: [Opensea.NFT] = []
     
     private var cancellables: [AnyCancellable] = []
     
