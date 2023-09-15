@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject private var viewModel = MainViewModel()
+    @State private var viewportHeight: CGFloat = .zero
     
     var body: some View {
         VStack(spacing: 8) {
@@ -36,6 +37,13 @@ struct ContentView: View {
                     }
                 }
                 .padding()
+            }
+            .background {
+                GeometryReader { proxy in
+                    Color.clear.onAppear {
+                        viewportHeight = proxy.size.height
+                    }
+                }
             }
         }
     }
