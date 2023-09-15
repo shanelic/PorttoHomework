@@ -14,52 +14,53 @@ struct ContentView: View {
     @State private var viewportHeight: CGFloat = .zero
     
     var body: some View {
-        VStack(spacing: 8) {
-            Text("Here loads \(viewModel.nfts.count) NFTs!")
-            Button {
-                viewModel.reset()
-            } label: {
-                Text("Reset NFTs")
-            }
-
-            ScrollView {
-                VStack {
-                    Grid(horizontalSpacing: 12, verticalSpacing: 12) {
-                        ForEach(viewModel.nfts.byEach(2)) { row in
-                            GridRow {
-                                ForEach(row) { item in
+        NavigationView {
+            VStack(spacing: 8) {
+                Text("Here loads \(viewModel.nfts.count) NFTs!")
+                Button {
+                    viewModel.reset()
+                } label: {
+                    Text("Reset NFTs")
+                }
+                ScrollView {
+                    VStack {
+                        Grid(horizontalSpacing: 12, verticalSpacing: 12) {
+                            ForEach(viewModel.nfts.byEach(2)) { row in
+                                GridRow {
+                                    ForEach(row) { item in
                                     ThumbnailView(imageUrl: item.imageUrl ?? "", name: item.name)
+                                        }
+                                    }
                                 }
                             }
+                        if viewModel.isLoadingNFTs {
+                            ProgressView()
                         }
                     }
-                    if viewModel.isLoadingNFTs {
-                        ProgressView()
+                    .padding()
+                    .background {
+                        GeometryReader { scrollProxy in
+                            Color.clear
+                                .preference(key: ScrollOffsetPreferenceKey.self, value: scrollProxy.frame(in: .named("scrollArea")).minY)
+                                .preference(key: ContentHeightPreferenceKey.self, value: scrollProxy.frame(in: .named("scrollArea")).height)
+                        }
+                        .onPreferenceChange(ScrollOffsetPreferenceKey.self) { minY in
+                            let percentage = Int((viewportHeight - minY) / wholeHeight * 10000) / 100
+                            if percentage > 102 {
+                                viewModel.getNfts()
+                            }
+                        }
+                        .onPreferenceChange(ContentHeightPreferenceKey.self) { height in
+                            self.wholeHeight = height
+                        }
                     }
                 }
-                .padding()
+                .coordinateSpace(name: "scrollArea")
                 .background {
-                    GeometryReader { scrollProxy in
-                        Color.clear
-                            .preference(key: ScrollOffsetPreferenceKey.self, value: scrollProxy.frame(in: .named("scrollArea")).minY)
-                            .preference(key: ContentHeightPreferenceKey.self, value: scrollProxy.frame(in: .named("scrollArea")).height)
-                    }
-                    .onPreferenceChange(ScrollOffsetPreferenceKey.self) { minY in
-                        let percentage = Int((viewportHeight - minY) / wholeHeight * 10000) / 100
-                        if percentage > 102 {
-                            viewModel.getNfts()
+                    GeometryReader { proxy in
+                        Color.clear.onAppear {
+                            viewportHeight = proxy.size.height
                         }
-                    }
-                    .onPreferenceChange(ContentHeightPreferenceKey.self) { height in
-                        self.wholeHeight = height
-                    }
-                }
-            }
-            .coordinateSpace(name: "scrollArea")
-            .background {
-                GeometryReader { proxy in
-                    Color.clear.onAppear {
-                        viewportHeight = proxy.size.height
                     }
                 }
             }
