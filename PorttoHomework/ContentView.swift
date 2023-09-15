@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @ObservedObject private var viewModel = MainViewModel()
+    @State private var wholeHeight: CGFloat = .zero
     @State private var viewportHeight: CGFloat = .zero
     
     var body: some View {
@@ -44,8 +45,10 @@ struct ContentView: View {
                             .preference(key: ContentHeightPreferenceKey.self, value: scrollProxy.frame(in: .named("scrollArea")).height)
                     }
                     .onPreferenceChange(ScrollOffsetPreferenceKey.self) { minY in
+                        let percentage = Int((viewportHeight - minY) / wholeHeight * 10000) / 100
                     }
                     .onPreferenceChange(ContentHeightPreferenceKey.self) { height in
+                        self.wholeHeight = height
                     }
                 }
             }
