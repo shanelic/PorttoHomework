@@ -46,6 +46,9 @@ struct ContentView: View {
                     }
                     .onPreferenceChange(ScrollOffsetPreferenceKey.self) { minY in
                         let percentage = Int((viewportHeight - minY) / wholeHeight * 10000) / 100
+                        if percentage > 102 {
+                            viewModel.getNfts()
+                        }
                     }
                     .onPreferenceChange(ContentHeightPreferenceKey.self) { height in
                         self.wholeHeight = height
