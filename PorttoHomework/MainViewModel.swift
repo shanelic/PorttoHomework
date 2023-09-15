@@ -24,7 +24,9 @@ class MainViewModel: ObservableObject {
         Task {
             await Web3Actor.shared.initialize(.EthereumGoerli, openseaApiKey: "c823fdee93814f7abd5492604697e9c8")
             await Web3Actor.shared.$nfts.sink(receiveValue: { nfts in
-                self.nfts = nfts
+                DispatchQueue.main.async {
+                    self.nfts = nfts
+                }
             }).store(in: &cancellables)
         }
     }
