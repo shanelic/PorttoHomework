@@ -28,11 +28,16 @@ struct ContentView: View {
                             ForEach(viewModel.nfts.byEach(2)) { row in
                                 GridRow {
                                     ForEach(row) { item in
-                                    ThumbnailView(imageUrl: item.imageUrl ?? "", name: item.name)
+                                        NavigationLink {
+                                            NFTDetailView(nft: item)
+                                                .navigationTitle(Text(item.collection))
+                                        } label: {
+                                            ThumbnailView(imageUrl: item.imageUrl ?? "", name: item.name)
                                         }
                                     }
                                 }
                             }
+                        }
                         if viewModel.isLoadingNFTs {
                             ProgressView()
                         }
