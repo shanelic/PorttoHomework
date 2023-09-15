@@ -37,7 +37,19 @@ struct ContentView: View {
                     }
                 }
                 .padding()
+                .background {
+                    GeometryReader { scrollProxy in
+                        Color.clear
+                            .preference(key: ScrollOffsetPreferenceKey.self, value: scrollProxy.frame(in: .named("scrollArea")).minY)
+                            .preference(key: ContentHeightPreferenceKey.self, value: scrollProxy.frame(in: .named("scrollArea")).height)
+                    }
+                    .onPreferenceChange(ScrollOffsetPreferenceKey.self) { minY in
+                    }
+                    .onPreferenceChange(ContentHeightPreferenceKey.self) { height in
+                    }
+                }
             }
+            .coordinateSpace(name: "scrollArea")
             .background {
                 GeometryReader { proxy in
                     Color.clear.onAppear {
