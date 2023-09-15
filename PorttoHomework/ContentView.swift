@@ -12,19 +12,31 @@ struct ContentView: View {
     @ObservedObject private var viewModel = MainViewModel()
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 8) {
-                Grid(horizontalSpacing: 12, verticalSpacing: 12) {
-                    ForEach(viewModel.nfts.byEach(2)) { row in
-                        GridRow {
-                            ForEach(row) { item in
-                                ThumbnailView(imageUrl: item.imageUrl ?? "", name: item.name)
+        VStack(spacing: 8) {
+            Text("Here loads \(viewModel.nfts.count) NFTs!")
+            Button {
+                viewModel.reset()
+            } label: {
+                Text("Reset NFTs")
+            }
+
+            ScrollView {
+                VStack {
+                    Grid(horizontalSpacing: 12, verticalSpacing: 12) {
+                        ForEach(viewModel.nfts.byEach(2)) { row in
+                            GridRow {
+                                ForEach(row) { item in
+                                    ThumbnailView(imageUrl: item.imageUrl ?? "", name: item.name)
+                                }
                             }
                         }
                     }
+                    if viewModel.isLoadingNFTs {
+                        ProgressView()
+                    }
                 }
+                .padding()
             }
-            .padding()
         }
     }
 }
