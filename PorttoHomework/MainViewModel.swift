@@ -12,6 +12,7 @@ import Web3
 
 class MainViewModel: ObservableObject {
     
+    @Published var balance: BigUInt = 0
     @Published var nfts: [Opensea.NFT] = []
     @Published var isLoadingNFTs: Bool = false
     
@@ -28,7 +29,22 @@ class MainViewModel: ObservableObject {
                     self.nfts = nfts
                 }
             }).store(in: &cancellables)
+            
+            getBalance()
             getNfts()
+        }
+    }
+    
+    public func getBalance() {
+        Task {
+            do {
+                let balance = try await Web3Actor.shared.getBalance(of: address).quantity
+                DispatchQueue.main.async {
+                    self.balance = balance
+                }
+            } catch {
+                print("::: error occurred getting balance:", error)
+            }
         }
     }
     

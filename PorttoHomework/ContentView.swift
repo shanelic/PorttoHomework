@@ -16,6 +16,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 8) {
+                Text("Balance: \(viewModel.balance.formatted())")
                 Text("Here loads \(viewModel.nfts.count) NFTs!")
                 Button {
                     viewModel.reset()
