@@ -19,6 +19,7 @@
 		30F83C332AB3581E00091E70 /* ThumbnailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F83C322AB3581E00091E70 /* ThumbnailView.swift */; };
 		30F83C362AB3730D00091E70 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 30F83C352AB3730D00091E70 /* SDWebImageSwiftUI */; };
 		30F83C392AB3732300091E70 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 30F83C382AB3732300091E70 /* SDWebImageSVGCoder */; };
+		30F83C3D2AB4985E00091E70 /* NFTDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30F83C3C2AB4985E00091E70 /* NFTDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		30E0A0722AB0BB1900FD1CE4 /* PorttoHomeworkUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorttoHomeworkUITests.swift; sourceTree = "<group>"; };
 		30E0A0742AB0BB1900FD1CE4 /* PorttoHomeworkUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorttoHomeworkUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		30F83C322AB3581E00091E70 /* ThumbnailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailView.swift; sourceTree = "<group>"; };
+		30F83C3C2AB4985E00091E70 /* NFTDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				30F83C322AB3581E00091E70 /* ThumbnailView.swift */,
+				30F83C3C2AB4985E00091E70 /* NFTDetailView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 				30F83C332AB3581E00091E70 /* ThumbnailView.swift in Sources */,
 				30E0A0572AB0BB1700FD1CE4 /* PorttoHomeworkApp.swift in Sources */,
 				30609C712AB3333300C9E1A7 /* MainViewModel.swift in Sources */,
+				30F83C3D2AB4985E00091E70 /* NFTDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
