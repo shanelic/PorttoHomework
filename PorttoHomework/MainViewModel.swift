@@ -28,6 +28,7 @@ class MainViewModel: ObservableObject {
                     self.nfts = nfts
                 }
             }).store(in: &cancellables)
+            getNfts()
         }
     }
     
