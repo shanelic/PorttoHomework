@@ -13,11 +13,12 @@ import Web3
 class MainViewModel: ObservableObject {
     
     @Published var nfts: [Opensea.NFT] = []
+    @Published var isLoadingNFTs: Bool = false
     
     private var cancellables: [AnyCancellable] = []
     
     private let address = EthereumAddress(hexString: "0x85fD692D2a075908079261F5E351e7fE0267dB02")!
-    private var nftCursor: String?
+    @Published var nftCursor: String?
     
     init() {
         Task {
@@ -29,12 +30,20 @@ class MainViewModel: ObservableObject {
     }
     
     public func getNfts() {
+        guard nftCursor != nil || nfts.isEmpty, !isLoadingNFTs else { return }
+        isLoadingNFTs = true
         Task {
             do {
-                guard nfts.isEmpty || nftCursor != nil else { return }
-                nftCursor = try await Web3Actor.shared.getNFTs(of: address, nextCursor: nftCursor)
+                let cursor = try await Web3Actor.shared.getNFTs(of: address, nextCursor: nftCursor)
+                DispatchQueue.main.async {
+                    self.nftCursor = cursor
+                    self.isLoadingNFTs = false
+                }
             } catch {
                 print("::: error occurred fetching NFTs with cursor \(nftCursor ?? "nil"):", error)
+                DispatchQueue.main.async {
+                    self.isLoadingNFTs = false
+                }
             }
         }
     }
