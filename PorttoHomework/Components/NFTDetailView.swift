@@ -14,7 +14,7 @@ struct NFTDetailView: View {
     var body: some View {
         ZStack {
             ScrollView {
-                VStack {
+                VStack(spacing: 8) {
                     if let imageUrl = nft.imageUrl {
                         if imageUrl.hasSuffix(".svg") {
                             WebImage(url: URL(string: imageUrl))
@@ -38,6 +38,7 @@ struct NFTDetailView: View {
                     Text(nft.description)
                         .multilineTextAlignment(.leading)
                 }
+                .padding()
             }
             VStack {
                 Spacer()
