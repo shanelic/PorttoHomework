@@ -31,6 +31,15 @@ class MainViewModel: ObservableObject {
         }
     }
     
+    public func reset() {
+        Task {
+            await Web3Actor.shared.resetNFTs()
+            DispatchQueue.main.async {
+                self.nftCursor = nil
+            }
+        }
+    }
+    
     public func getNfts() {
         guard nftCursor != nil || nfts.isEmpty, !isLoadingNFTs else { return }
         isLoadingNFTs = true
